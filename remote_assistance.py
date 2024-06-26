@@ -2,9 +2,11 @@ import tkinter as tk
 from tkinter import messagebox, CENTER
 import subprocess
 
+# Função para executar o comando MSRA como administrador
 def run_as_admin():
     computername = entry_computer.get()
 
+    # Verifica se o campo do nome do computador está vazio
     if not computername:
         messagebox.showwarning("Atenção", "Por favor, insira o nome do computador.")
         return
@@ -41,6 +43,7 @@ root.geometry(f"{window_width}x{window_height}+{position_x}+{position_y}")
 frame = tk.Frame(root)
 frame.place(relx=0.5, rely=0.5, anchor=CENTER)
 
+# Label e campo de entrada para o nome do computador
 tk.Label(frame, text="Computer Name:").pack(pady=5)
 entry_computer = tk.Entry(frame)
 entry_computer.pack(pady=5)
@@ -53,7 +56,9 @@ def bind_enter(event):
 # Vincula a tecla Enter ao botão Conectar
 root.bind('<Return>', bind_enter)
 
+# Botão Conectar
 btn_conectar = tk.Button(frame, text="Conectar", command=run_as_admin)
 btn_conectar.pack(pady=10)
 
+# Inicia a interface gráfica
 root.mainloop()
